@@ -179,34 +179,6 @@ GetNextPrintfArgument:
     inc dword [printfProceedArgNumber]  ; increment number of parsed parameters
     
     ret
-    
-memset:
-    ; Save context
-    push ebp
-    mov ebp, esp
-    
-    ; Save used registers
-    push ax
-    push ecx
-    push edi
-    
-    ; Initialization
-    mov edi, [ebp + 8]      ; [ebp + 8] - address of the object to fill
-    mov al, [ebp + 12]      ; [ebp + 12] - fill byte
-    mov ecx, [ebp + 16]     ; [ebp + 16] - number of bytes to fill
-    
-    ; Filling
-    cld
-    rep stosb
-    
-    ; Restore saved used registers
-    pop edi
-    pop ecx
-    pop ax
-    
-    ; Restore context
-    pop ebp
-    ret
 
 
 specifierPrefix     equ     '%'
