@@ -19,3 +19,21 @@ There are `%%, %c, %s, %d, %x, %o, %b` (`%b` stands for "convert a boolean argum
 1. [`switch`](https://en.cppreference.com/w/cpp/language/switch) is implemented via [`jump table`](https://en.wikipedia.org/wiki/Branch_table).
 2. `itoa` is implemented with the faster division if the given base (radix) is a power of two.
 3. `GetNextPrintfArgument` function gets each new unproceed printf argument using global variable (it is assumed that the number of arguments passed after `format string` is not less than the number of specifiers in the it).
+
+## Compiling && Running
+**Compile, link and run examples:**
+```
+cd examples
+nasm.exe -f win32 ownPrintf.asm -o ownPrintf.obj
+gcc.exe -m32 -o ownPrintf
+.\ownPrintf.exe
+```
+
+**Compile** `printflib.asm` **, link and run** with another program (e.g. with C program)
+```
+cd examples
+& '<path_to_nasm_assembler>\nasm.exe' -f win32 ..\lib\printflib.asm
+<mingw32_gcc>.exe -c test.c -o test.o
+<mingw32_gcc>.exe test.o ..\lib\printflib.obj -o test.exe
+.\test.exe
+```
