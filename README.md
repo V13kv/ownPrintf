@@ -18,7 +18,7 @@ There are `%%, %c, %s, %d, %x, %o, %b` (`%b` stands for "convert a boolean argum
 ## Implementation details
 1. [`switch`](https://en.cppreference.com/w/cpp/language/switch) is implemented via [`jump table`](https://en.wikipedia.org/wiki/Branch_table).
 2. `itoa` is implemented with the faster division if the given base (radix) is a power of two.
-3. `GetNextPrintfArgument` function gets each new unproceed printf argument using global variable (it is assumed that the number of arguments passed after `format string` is not less than the number of specifiers in the it).
+3. `GetNextPrintfArgument` function gets each new unproceed printf argument using global variable (it is assumed that the number of arguments passed after `format string` is not less than the number of specifiers in it).
 
 ## Compiling && Running
 **Compile, link and run examples:**
