@@ -32,8 +32,8 @@ gcc.exe -m32 -o ownPrintf
 **Compile** `printflib.asm` **, link and run** with another program (e.g. with C program)
 ```
 cd examples
-& '<path_to_nasm_assembler>\nasm.exe' -f win32 ..\lib\printflib.asm
-<mingw32_gcc>.exe -c test.c -o test.o
-<mingw32_gcc>.exe test.o ..\lib\printflib.obj -o test.exe
+<path_to_nasm_assembler>\nasm.exe -f win32 ..\lib\printflib.asm
+<path_to_mingw32_gcc>\gcc.exe -c test.c -o test.o
+<path_to_mingw32_gcc>\gcc.exe test.o ..\lib\printflib.obj -o test.exe
 .\test.exe
 ```
