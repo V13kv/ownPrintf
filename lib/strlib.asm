@@ -3,10 +3,6 @@
 
 %include "../lib/winlib.asm"
 
-%ifndef endOfString
-    endOfString         equ     0x00
-%endif
-
 %macro itoaFastConvertOfPowerOfTwo 2
     mov edx, eax
     and edx, %1 - 1
@@ -128,19 +124,35 @@ itoa:
     mov ebx, [ebp + 16]     ; [ebp + 16] - radix used to represent the value as a string
 
     mov esi, edi    ; save beginning of the buffer
+    mov ecx, ebx    ; save radix
 
     ; ---Check for faster conversion---
-    cmp ebx, 16
-    jz .hexLoop
+    cmp ebx, BASE_DEC
+    jz .signCheck
     
-    cmp ebx, 8
+    cmp ebx, BASE_BIN
+    jz .binLoop
+     
+    cmp ebx, BASE_OCT
     jz .octLoop
     
-    cmp ebx, 2
-    jz .binLoop
+    cmp ebx, BASE_HEX
+    jz .hexLoop
+  
     ; ---End of check for faster conversion---
-
-    mov ecx, ebx
+.signCheck:
+    mov edx, eax
+    and edx, fourByteSignCheck
+    jz .notPowerOfTwo
+    
+    mov byte [edi], minusSign
+    inc edi
+    inc esi 
+    
+    ; Get modulo of the given negative number
+    not eax
+    inc eax    
+   
 .notPowerOfTwo:
     xor edx, edx
     idiv ecx
@@ -169,7 +181,7 @@ itoa:
     jmp .reverseBuffer
 
 .reverseBuffer:
-    mov edx, esi        ; save start address of the buffer
+    ;mov edx, esi        ; save start address of the buffer
     
     mov ecx, edi
     sub ecx, esi        ; ecx - length of the string
@@ -199,7 +211,6 @@ itoa:
     dec edi
     loop .xchgValues
 
-    mov edi, edx        ; pointer to the char buffer (string)
 .done:
     ; Restore saved registers
     pop edi
@@ -240,6 +251,18 @@ memset:
     ; Restore context
     pop ebp
     ret
-    
+ 
+ 
+%ifndef endOfString
+    endOfString         equ     0x00
+%endif
+
+fourByteSignCheck   equ     0x80000000
+minusSign           equ     '-'
+
+BASE_HEX    equ     16
+BASE_DEC    equ     10
+BASE_OCT    equ     8
+BASE_BIN    equ     2   
 
 %endif

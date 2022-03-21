@@ -86,16 +86,8 @@ _myPrintf:
         dd  .caseX
  
     .caseB:
-        call GetNextPrintfArgument   
-        mov ebx, eax
-        
-        pop eax
-        push ebx      
-        call btoa 
-        add esp, 4
-                
-        jmp .getNextCharacter          
-    
+        mov dword [base], BASE_BIN
+        jmp .body
     .caseO:
         mov dword [base], BASE_OCT
         jmp .body
@@ -190,10 +182,6 @@ specifierD          equ     'd'
 specifierX          equ     'x'
 specifierO          equ     'o'
 specifierB          equ     'b'
-
-BASE_HEX     equ     16
-BASE_DEC     equ     10
-BASE_OCT     equ     8
 
 STRING_BUFFER_LENGTH    equ     64
 
