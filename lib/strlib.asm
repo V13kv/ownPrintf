@@ -15,9 +15,9 @@
 %endmacro
 
 section .data
-    charTable:      db  "0123456789abcdef"
-    true            db  "true", 0
-    false           db  "false", 0
+    charTable:  db  "0123456789abcdef"
+    true:       db  "true", 0
+    false:      db  "false", 0
 
 section .bss
     numberOfBytesWritten:   resd    1
@@ -83,7 +83,7 @@ btoa:
     
     ; Save used registers
     push eax
-    
+
     ; Main body
     mov eax, [ebp + 8]          ; [ebp + 8] - value to represent as a bool
     test eax, eax
@@ -251,7 +251,7 @@ memset:
     ; Restore context
     pop ebp
     ret
- 
+
  
 %ifndef endOfString
     endOfString         equ     0x00

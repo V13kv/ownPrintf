@@ -17,12 +17,14 @@ int main()
     printf("Hi, lets %% %s %% %d to HEX: 0x%x and to OCT: 0o%o - (%c)\n\n", convert, toConvert, toConvert, toConvert, 'Y');
 
     myPrintf(GREEN "My printf function:\n" RESET);
-    myPrintf("Hi, lets %% %s %% %d to HEX: 0x%x, to OCT: 0o%o and to BIN: 0b%b - (%c)\n", convert, toConvert, toConvert, toConvert, toConvert, 'Y');
-    // myPrintf("Hello, %%world!%%%%KEKL%%\n");
-    // myPrintf("H%c M%c Fr%%%c%%end!\n", 'i', 'y', 'i');
-    // myPrintf("Hi, my name is '%s'\n", "mate!!!");
-    // myPrintf("%d in binary is %b\n", toConvert, toConvert);
-    // myPrintf("Hi, lets %%%s%% " GREEN "%d" RESET " to HEX: " YELLOW "0x%x" RESET " and to OCT: " RED "0o%o" RESET " - %b (%c)\n", convert, toConvert, toConvert, toConvert, toConvert, 'Y');
+    myPrintf("Hello, %%world!%%%%KEKL%%\n");
+    myPrintf("H%c M%c Fr%%%c%%end!\n", 'i', 'y', 'i');
+    myPrintf("Hi, my name is '%s'\n", "mate!!!");
+    myPrintf("%d in binary is %b\n", toConvert, toConvert);
+    myPrintf("Hi, lets %%%s%% " GREEN "%d" RESET " to HEX: " YELLOW "0x%x" RESET " and to OCT: " RED "0o%o" RESET " - %b (%c)\n"
+            "%d %s %x %d%%%c%b", 
+            convert, toConvert, toConvert, toConvert, toConvert, 'Y',
+            -1, "love", 3802, 100, 33, 15);
 
     return 0;
 }

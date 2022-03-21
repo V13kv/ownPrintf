@@ -78,11 +78,11 @@ _myPrintf:
         dd  .caseB
         dd  .caseC
         dd  .caseD
-        times 10 dd .default
+        times 'o' - 'd' - 1 dd .default
         dd  .caseO
-        times 3 dd .default
+        times 's' - 'o' - 1 dd .default
         dd  .caseS
-        times 4 dd .default
+        times 'x' - 's' - 1 dd .default
         dd  .caseX
  
     .caseB:
