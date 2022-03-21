@@ -5,7 +5,7 @@ Shortened Assembly [`printf`](https://en.cppreference.com/w/c/io/fprintf) librar
 The idea is to understand how `printf` works from the inside and understand the intricacies of writing applications for the Windows system in [NASM](https://www.nasm.us/) assembler using the [Windows API](https://docs.microsoft.com/en-us/previous-versions//cc433218(v=vs.85)?redirectedfrom=MSDN).
 
 ## What `printf` specifiers are available?
-There are `%%, %c, %s, %d, %x, %o, %b` (`%b` stands for "convert a boolean argument to the string `true` or `false`, named `btoa` in the code) specifiers.
+There are `%%, %c, %s, %d, %x, %o, %b` (`%b` stands for "convert number to binary format") specifiers.
 
 ## Program architecture
 ![Program architecture](https://github.com/V13kv/ownPrintf/blob/main/printf.png)
