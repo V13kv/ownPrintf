@@ -1,7 +1,7 @@
 # Printf implementation
 Shortened Assembly [`printf`](https://en.cppreference.com/w/c/io/fprintf) library implementation for Windows.
 
-## What is the idea?
+## Motivation
 The idea is to understand how `printf` works from the inside and understand the intricacies of writing applications for the Windows system in [NASM](https://www.nasm.us/) using the [Windows API](https://docs.microsoft.com/en-us/previous-versions//cc433218(v=vs.85)?redirectedfrom=MSDN).
 
 ## What `printf` specifiers are available?
